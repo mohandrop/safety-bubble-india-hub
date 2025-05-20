@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { MapPin, AlertTriangle, Phone, Users, Water, Compass, MessageSquare } from "lucide-react";
+import { MapPin, AlertTriangle, Phone, Users, Compass, MessageSquare } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useLocation } from "react-router-dom";
 import DisasterAlerts from "@/components/DisasterAlerts";

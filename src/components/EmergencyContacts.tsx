@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { Phone, Plus, Trash2, User, Ambulance, PoliceOfficer, AlertCircle } from "lucide-react";
+import { Phone, Plus, Trash2, User, AlertCircle, Building, MapPin, Hospital } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -94,9 +94,9 @@ const EmergencyContacts = () => {
   const getContactIcon = (type: string) => {
     switch (type) {
       case "medical":
-        return <Ambulance className="h-4 w-4 text-red-600" />;
+        return <Hospital className="h-4 w-4 text-red-600" />;
       case "police":
-        return <PoliceOfficer className="h-4 w-4 text-blue-600" />;
+        return <Building className="h-4 w-4 text-blue-600" />;
       case "fire":
         return <AlertCircle className="h-4 w-4 text-orange-600" />;
       case "emergency":

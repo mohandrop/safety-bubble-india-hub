@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect, useRef } from "react";
-import { Water, ArrowRight, MapPin, Shelter, Food } from "lucide-react";
+import { MapPin, ArrowRight, Building, Hospital, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/sonner";
@@ -36,21 +35,21 @@ const ResourceMap: React.FC<ResourceMapProps> = ({ location }) => {
   // Mock resources data (in a real app this would come from an API)
   const mockResourceData = {
     shelter: [
-      { id: "s1", name: "Community Relief Center", type: "shelter", address: "123 Main St, Chennai", distance: "1.2 km", lat: 13.0827, lng: 80.2707 },
-      { id: "s2", name: "Government School Shelter", type: "shelter", address: "45 Park Ave, Chennai", distance: "2.5 km", lat: 13.0900, lng: 80.2800 },
-      { id: "s3", name: "Red Cross Emergency Shelter", type: "shelter", address: "78 Relief Rd, Chennai", distance: "3.1 km", lat: 13.0700, lng: 80.2600 }
+      { id: "s1", name: "Community Relief Center", type: "shelter" as const, address: "123 Main St, Chennai", distance: "1.2 km", lat: 13.0827, lng: 80.2707 },
+      { id: "s2", name: "Government School Shelter", type: "shelter" as const, address: "45 Park Ave, Chennai", distance: "2.5 km", lat: 13.0900, lng: 80.2800 },
+      { id: "s3", name: "Red Cross Emergency Shelter", type: "shelter" as const, address: "78 Relief Rd, Chennai", distance: "3.1 km", lat: 13.0700, lng: 80.2600 }
     ],
     water: [
-      { id: "w1", name: "Municipal Water Station", type: "water", address: "10 Water St, Chennai", distance: "0.8 km", lat: 13.0827, lng: 80.2800 },
-      { id: "w2", name: "Community Well", type: "water", address: "22 Well Rd, Chennai", distance: "1.4 km", lat: 13.0900, lng: 80.2707 }
+      { id: "w1", name: "Municipal Water Station", type: "water" as const, address: "10 Water St, Chennai", distance: "0.8 km", lat: 13.0827, lng: 80.2800 },
+      { id: "w2", name: "Community Well", type: "water" as const, address: "22 Well Rd, Chennai", distance: "1.4 km", lat: 13.0900, lng: 80.2707 }
     ],
     food: [
-      { id: "f1", name: "Relief Food Distribution", type: "food", address: "56 Food St, Chennai", distance: "1.0 km", lat: 13.0800, lng: 80.2750 },
-      { id: "f2", name: "Community Kitchen", type: "food", address: "89 Meal Rd, Chennai", distance: "1.9 km", lat: 13.0850, lng: 80.2650 }
+      { id: "f1", name: "Relief Food Distribution", type: "food" as const, address: "56 Food St, Chennai", distance: "1.0 km", lat: 13.0800, lng: 80.2750 },
+      { id: "f2", name: "Community Kitchen", type: "food" as const, address: "89 Meal Rd, Chennai", distance: "1.9 km", lat: 13.0850, lng: 80.2650 }
     ],
     medical: [
-      { id: "m1", name: "Government Hospital", type: "medical", address: "34 Health Ave, Chennai", distance: "2.2 km", lat: 13.0750, lng: 80.2770 },
-      { id: "m2", name: "Medical Relief Camp", type: "medical", address: "67 Doctor St, Chennai", distance: "0.7 km", lat: 13.0880, lng: 80.2720 }
+      { id: "m1", name: "Government Hospital", type: "medical" as const, address: "34 Health Ave, Chennai", distance: "2.2 km", lat: 13.0750, lng: 80.2770 },
+      { id: "m2", name: "Medical Relief Camp", type: "medical" as const, address: "67 Doctor St, Chennai", distance: "0.7 km", lat: 13.0880, lng: 80.2720 }
     ]
   };
 
@@ -104,13 +103,13 @@ const ResourceMap: React.FC<ResourceMapProps> = ({ location }) => {
   const getResourceIcon = (type: string) => {
     switch (type) {
       case "water":
-        return <Water className="h-5 w-5 text-blue-600" />;
+        return <MapPin className="h-5 w-5 text-blue-600" />;
       case "food":
-        return <Food className="h-5 w-5 text-green-600" />;
+        return <User className="h-5 w-5 text-green-600" />;
       case "shelter":
-        return <Shelter className="h-5 w-5 text-orange-600" />;
+        return <Building className="h-5 w-5 text-orange-600" />;
       case "medical":
-        return <MapPin className="h-5 w-5 text-red-600" />;
+        return <Hospital className="h-5 w-5 text-red-600" />;
       default:
         return <MapPin className="h-5 w-5 text-gray-600" />;
     }
@@ -152,28 +151,28 @@ const ResourceMap: React.FC<ResourceMapProps> = ({ location }) => {
                 onClick={() => setResourceType("shelter")}
                 className="flex items-center gap-2"
               >
-                <Shelter size={16} /> Shelters
+                <Building size={16} /> Shelters
               </Button>
               <Button 
                 variant={resourceType === "water" ? "default" : "outline"} 
                 onClick={() => setResourceType("water")}
                 className="flex items-center gap-2"
               >
-                <Water size={16} /> Water Sources
+                <MapPin size={16} /> Water Sources
               </Button>
               <Button 
                 variant={resourceType === "food" ? "default" : "outline"} 
                 onClick={() => setResourceType("food")}
                 className="flex items-center gap-2"
               >
-                <Food size={16} /> Food Centers
+                <User size={16} /> Food Centers
               </Button>
               <Button 
                 variant={resourceType === "medical" ? "default" : "outline"} 
                 onClick={() => setResourceType("medical")}
                 className="flex items-center gap-2"
               >
-                <MapPin size={16} /> Medical Help
+                <Hospital size={16} /> Medical Help
               </Button>
             </div>
             
